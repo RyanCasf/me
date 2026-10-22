@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ryan Castro Ferreira</title>
+<meta name="description" content="Ryan Castro Ferreira — desenvolvedor Java/JSF. Projetos, stack e contato.">
+<meta name="theme-color" content="#130d2c">
+<link rel="icon" href="avatar.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f1edf7; --surface:#ffffff; --ink:#130d2c; --muted:#4a4566;
+    --line:#d3d0d9; --accent:#3f1078; --accent-ink:#f1edf7; --tag:#e6e0f5;
+    --gold:#b8960a; --red:#ac3232; --hero:#a491e5;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0d091d; --surface:#130d2c; --ink:#f1edf7; --muted:#a49cc4;
+      --line:#241954; --accent:#a491e5; --accent-ink:#0d091d; --tag:#1d1545;
+      --gold:#ead122; --red:#ac3232; --hero:#240762;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0d091d; --surface:#130d2c; --ink:#f1edf7; --muted:#a49cc4;
+    --line:#241954; --accent:#a491e5; --accent-ink:#0d091d; --tag:#1d1545;
+    --gold:#ead122; --red:#ac3232; --hero:#240762;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font:16px/1.6 "Space Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:clip}
+  a{color:inherit}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px}
+
+  header.top{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+  .logo{font-weight:600;font-size:14px;text-decoration:none}
+  .logo span{color:var(--gold)}
+  nav{display:flex;gap:18px;align-items:center;font-size:14px}
+  nav a{text-decoration:none;color:var(--muted)}
+  nav a:hover{color:var(--ink)}
+  #theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px}
+
+  .hero{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;padding:64px 0 56px;border-bottom:3px solid var(--gold);position:relative}
+  .hero::before{content:"";position:absolute;inset:0 -100vw;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--hero) 35%,transparent));z-index:-1}
+  .hero img{width:132px;height:132px;border-radius:20px;border:3px solid var(--gold);object-fit:cover;box-shadow:6px 6px 0 var(--red);image-rendering:pixelated}
+  .kicker{font-size:13px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+  h1{font-size:clamp(34px,6vw,58px);line-height:1.05;letter-spacing:-.02em;margin:8px 0 12px}
+  .lead{color:var(--muted);max-width:560px;font-size:18px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;font-size:14px;color:var(--muted)}
+  .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:500;font-size:15px;border:1px solid var(--line);background:var(--surface)}
+  .btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn:not(.primary):hover{border-color:var(--gold)}
+  .btn:hover{transform:translateY(-1px)}
+
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;font-weight:500}
+  h2 b{color:var(--gold);font-weight:600;margin-right:8px}
+
+  .about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+  .about p{font-size:18px;margin-bottom:14px}
+  .stack{display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start}
+  .chip{background:var(--tag);border-radius:999px;padding:6px 12px;font-size:13px}
+  .chip.learning{border:1px dashed var(--accent);background:transparent}
+  .legend{width:100%;font-size:12px;color:var(--muted);margin-top:6px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+  .card:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .card h3{font-size:17px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+  .card h3 .arrow{color:var(--accent)}
+  .card p{color:var(--muted);font-size:14px;flex:1}
+  .card .info{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--gold);margin-right:6px;vertical-align:middle}
+  .pin{font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em}
+  #more{margin-top:20px}
+
+  .contact{text-align:center}
+  .contact p{font-size:clamp(22px,4vw,32px);margin-bottom:24px;letter-spacing:-.01em}
+  .contact .cta{justify-content:center}
+  footer{padding:28px 0;font-size:13px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+  @media (max-width:640px){
+    nav a{display:none}
+    .hero{grid-template-columns:1fr;gap:20px;padding:40px 0}
+    .hero img{width:96px;height:96px}
+    .about{grid-template-columns:1fr;gap:24px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo mono" href="#">~/ryan<span>casf</span></a>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+      <button id="theme" aria-label="Alternar tema">◐</button>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img src="avatar.png" alt="Avatar de Ryan Castro Ferreira em pixel art">
+    <div>
+      <div class="kicker mono">🪖 Only go!</div>
+      <h1>Ryan Castro Ferreira</h1>
+      <p class="lead">Desenvolvedor Java focado em sistemas web corporativos — ERP, JSF e relatórios.</p>
+      <div class="meta mono">
+        <span>💼 KronoSys (ERP)</span>
+        <span>📍 Itaquaquecetuba - SP</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="https://github.com/RyanCasf" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="btn" href="https://www.linkedin.com/in/ryan-castro-ferreira/" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn" href="mailto:ryaninternet62@gmail.com">E-mail</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="sobre">
+    <h2><b class="mono">01</b>Sobre</h2>
+    <div class="about">
+      <div>
+        <p>Sou programador no <a href="https://kronosys.com.br/global/" target="_blank" rel="noopener">KronoSys</a>, onde trabalho no desenvolvimento de um ERP web com Java EE.</p>
+        <p>Gosto de resolver problemas de regra de negócio do mundo real — fiscal, financeiro, relatórios — e de deixar o código organizado para quem vem depois.</p>
+      </div>
+      <div class="stack">
+        <span class="chip">Java</span>
+        <span class="chip">Java EE</span>
+        <span class="chip">JSF</span>
+        <span class="chip">PrimeFaces</span>
+        <span class="chip">MySQL</span>
+        <span class="chip">JasperReports</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">CSS</span>
+        <span class="chip learning">Spring</span>
+        <span class="chip learning">React</span>
+        <span class="legend">tracejado = estudando agora</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <h2><b class="mono">02</b>Projetos</h2>
+    <div class="grid" id="repos"></div>
+    <a class="btn" id="more" href="https://github.com/RyanCasf?tab=repositories" target="_blank" rel="noopener">Ver todos os repositórios ↗</a>
+  </section>
+
+  <section id="contato" class="contact">
+    <h2><b class="mono">03</b>Contato</h2>
+    <p>Bora conversar sobre um projeto ou vaga?</p>
+    <div class="cta">
+      <a class="btn primary" href="mailto:ryaninternet62@gmail.com">ryaninternet62@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/ryan-castro-ferreira/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <footer class="mono">
+    <span>© <span id="year"></span> Ryan Castro Ferreira</span>
+    <span>Hospedado no GitHub Pages</span>
+  </footer>
+</div>
+
+<script>
+  // Tema claro/escuro (lembra a escolha do visitante)
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('theme');
+    try{ var saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved); }catch(e){}
+    btn.addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+      var next=cur==='dark'?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{ localStorage.setItem('theme',next); }catch(e){}
+    });
+    document.getElementById('year').textContent=new Date().getFullYear();
+  })();
+
+  // Projetos: fixados primeiro; o resto vem da API pública do GitHub
+  var USER='RyanCasf';
+  var PINNED=[
+    {name:'Duozada',description:'TCC - Aplicativo mobile de match entre gamers para jogarem juntos, conversarem e fomentarem a comunidade.',language:null},
+    {name:'EstruturaDado',description:'Armazenamento e organização de dados.',language:'Java'},
+    {name:'JSF',description:'Referências de desenvolvimento com JSF.',language:'Java'},
+    {name:'jasper-parser',description:'Jasper Reports.',language:'Java'}
+  ];
+  var MAX=8;
+
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function card(r,pinned){
+    return '<a class="card" href="https://github.com/'+USER+'/'+encodeURIComponent(r.name)+'" target="_blank" rel="noopener">'+
+      (pinned?'<span class="pin mono">★ destaque</span>':'')+
+      '<h3>'+esc(r.name)+'<span class="arrow">↗</span></h3>'+
+      '<p>'+esc(r.description||'Sem descrição.')+'</p>'+
+      '<div class="info mono">'+
+        (r.language?'<span><span class="dot"></span>'+esc(r.language)+'</span>':'')+
+        (r.stargazers_count?'<span>★ '+r.stargazers_count+'</span>':'')+
+      '</div></a>';
+  }
+  function render(list){
+    var pinnedNames=PINNED.map(function(p){return p.name.toLowerCase();});
+    var byName={}; list.forEach(function(r){byName[r.name.toLowerCase()]=r;});
+    var html=PINNED.map(function(p){ return card(byName[p.name.toLowerCase()]?Object.assign({},byName[p.name.toLowerCase()],{description:p.description}):p,true); });
+    list.filter(function(r){return !r.fork && pinnedNames.indexOf(r.name.toLowerCase())<0 && r.name.toLowerCase()!==USER.toLowerCase() && r.name.toLowerCase()!==(USER+'.github.io').toLowerCase();})
+        .slice(0,MAX-PINNED.length)
+        .forEach(function(r){html.push(card(r,false));});
+    document.getElementById('repos').innerHTML=html.join('');
+  }
+  render([]);
+  fetch('https://api.github.com/users/'+USER+'/repos?sort=updated&per_page=100')
+    .then(function(r){return r.ok?r.json():[];})
+    .then(function(data){ if(Array.isArray(data)) render(data); })
+    .catch(function(){});
+</script>
+</body>
+</html>
