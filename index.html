@@ -124,7 +124,7 @@
     <h2><b class="mono">01</b>Sobre</h2>
     <div class="about">
       <div>
-        <p>Sou programador no <a href="https://kronosys.com.br/global/" target="_blank" rel="noopener">KronoSys</a>, onde trabalho no desenvolvimento de um ERP web com Java EE.</p>
+        <p>Sou programador no <a href="https://kronosys.com.br/" target="_blank" rel="noopener">KronoSys</a>, onde trabalho no desenvolvimento de um ERP web com Java EE.</p>
         <p>Gosto de resolver problemas de regra de negócio do mundo real — fiscal, financeiro, relatórios — e de deixar o código organizado para quem vem depois.</p>
       </div>
       <div class="stack">
@@ -165,7 +165,6 @@
 </div>
 
 <script>
-  // Tema claro/escuro (lembra a escolha do visitante)
   (function(){
     var root=document.documentElement, btn=document.getElementById('theme');
     try{ var saved=localStorage.getItem('theme'); if(saved) root.setAttribute('data-theme',saved); }catch(e){}
@@ -179,7 +178,6 @@
     document.getElementById('year').textContent=new Date().getFullYear();
   })();
 
-  // Projetos: fixados primeiro; o resto vem da API pública do GitHub
   var USER='RyanCasf';
   var PINNED=[
     {name:'Duozada',description:'TCC - Aplicativo mobile de match entre gamers para jogarem juntos, conversarem e fomentarem a comunidade.',language:null},
@@ -191,7 +189,7 @@
 
   function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function card(r,pinned){
-    return '<a class="card" href="https://github.com/'+USER+'/'+encodeURIComponent(r.name)+'" target="_blank" rel="noopener">'+
+    return '<a class="card" href="https://github.com/' + USER + '/'+ encodeURIComponent(r.name)+'" target="_blank" rel="noopener">'+
       (pinned?'<span class="pin mono">★ destaque</span>':'')+
       '<h3>'+esc(r.name)+'<span class="arrow">↗</span></h3>'+
       '<p>'+esc(r.description||'Sem descrição.')+'</p>'+
